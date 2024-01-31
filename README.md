@@ -7,7 +7,6 @@ These instructions assume:
  - Headless build (i.e no monitor/keyboard connected) so setup via ssh.
 ### Prepare SD card
  - Use Raspberry Pi Imager
- - (optional) right click on SD card drive labelled "bootfs" and rename to hostname
- - Download 
- - Copy folder "rpi-iot-master" to SD card drive labelled "bootfs"
+ - (optional) right click on SD card drive labelled "bootfs" and rename to hostname of RPi
+ - Download "rpi-home-setup.sh" and copy to SD card drive
  
