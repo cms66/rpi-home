@@ -7,6 +7,8 @@ These instructions assume:
  - Headless build (i.e no monitor/keyboard connected) so setup via ssh.
 ### Prepare SD card
  - Use Raspberry Pi Imager
+ - - Set Hostname
+   - Set WiFi only if it will be needed
  - (optional) right click on SD card drive labelled "bootfs" and rename to hostname of RPi
  - Download "rpi-home-setup.sh" and copy to SD card drive
  
