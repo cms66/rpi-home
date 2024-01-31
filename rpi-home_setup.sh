@@ -12,7 +12,8 @@ apt-get -y upgrade
 apt-get -y install python3-dev gcc g++ gfortran libraspberrypi-dev libomp-dev git-core build-essential cmake pkg-config make screen htop stress zip nfs-common
 
 # Git setup
-mkdir /home/$usrname/.git
+mkdir /home/$usrname/.pisetup
+cd /home/$usrname/.pisetup
 
 
 # Add bash alias for setup and test menu
