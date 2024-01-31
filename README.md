@@ -8,7 +8,6 @@ These instructions assume:
  - Raspberry Pi Imager used for SD card imaging
 
 ### Prepare SD card
- - Raspberry Pi Imager
  - Set Hostname
  - Set WiFi only if it will be needed
    - Set WiFi only if it will be needed
