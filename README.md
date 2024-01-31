@@ -9,7 +9,8 @@ These instructions assume:
 
 ### Prepare SD card
  - Raspberry Pi Imager
- - - Set Hostname
+ - Set Hostname
+ - Set WiFi only if it will be needed
    - Set WiFi only if it will be needed
    - Set ssh access
  - (optional) right click on SD card drive labelled "bootfs" and rename to hostname of RPi
