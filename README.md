@@ -10,8 +10,7 @@ These instructions assume:
 ### Prepare SD card
  - Set Hostname
  - Set WiFi only if it will be needed
-   - Set WiFi only if it will be needed
-   - Set ssh access
+ - Set ssh
  - (optional) right click on SD card drive labelled "bootfs" and rename to hostname of RPi
  - Download "rpi-home_setup.sh" and copy to SD card drive
  
