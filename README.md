@@ -9,6 +9,7 @@ These instructions assume:
 
 ### Prepare SD card
  - Set Hostname
+ - Set Username/password
  - Set WiFi only if it will be needed
  - Set ssh
  - (optional) right click on SD card drive labelled "bootfs" and rename to hostname of RPi.
