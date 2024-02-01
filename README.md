@@ -1,6 +1,5 @@
 # rpi-home
 ## The rpi-home project
-The aim of this project is to provide a set of scripts and supporting files to help with initial setup and security of a Raspberry Pi (using the latest Raspbian image, with a focus on the lite version).
 More detailed instructions and information about the project are available [here](../../wiki/).
 ## Quick instructions
 These instructions assume:
