@@ -13,6 +13,6 @@ These instructions assume:
  - Set WiFi only if it will be needed
  - Set ssh
  - (optional) right click on SD card drive labelled "bootfs" and rename to hostname of RPi.
- - Download "rpi_setup_base.sh" and copy to SD card drive (after imaging is complete).
+ - Download [rpi_setup_base.sh](https://github.com/cms66/rpi-home/raw/main/rpi_setup_base.sh) and copy to SD card drive (after imaging is complete).
  
 ### First boot
