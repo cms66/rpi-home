@@ -15,12 +15,13 @@ apt-get -y install python3-dev gcc g++ gfortran libraspberrypi-dev libomp-dev gi
 mkdir /home/$usrname/.pisetup
 cd /home/$usrname/.pisetup
 git clone https://github.com/cms66/rpi-home.git
+chown -R $usrname:$usrname /home/$usrname/.pisetup
 
 # Add bash alias for setup and test menu
-#echo "alias mysetup=\"sudo sh ~/.pisetup/rpi_setup_menu.sh\"" >> /home/$usrname/.bashrc
-#echo "alias mytest=\"sudo sh ~/.pisetup/rpi_test_menu.sh\"" >> /home/$usrname/.bashrc
+echo "alias mysetup=\"sudo sh ~/.pisetup/rpi-home/rpi_setup_menu.sh\"" >> /home/$usrname/.bashrc
+echo "alias mytest=\"sudo sh ~/.pisetup/rpi-home/rpi_test_menu.sh\"" >> /home/$usrname/.bashrc
 
 # - Create python Virtual Environment (with access to system level packages) and bash alias for activation
-#python -m venv --system-site-packages /home/$usrname/.venv
-#echo "alias myvp=\"source ~/.venv/bin/activate\"" >> /home/$usrname/.bashrc
-#chown -R $usrname:$usrname /home/$usrname/.venv
+python -m venv --system-site-packages /home/$usrname/.venv
+echo "alias myvp=\"source ~/.venv/bin/activate\"" >> /home/$usrname/.bashrc
+chown -R $usrname:$usrname /home/$usrname/.venv
