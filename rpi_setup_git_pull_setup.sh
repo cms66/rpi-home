@@ -2,4 +2,4 @@
 cd /home/$usrname/.pisetup/rpi-home
 git pull https://github.com/cms66/rpi-home
 cd $OLDPWD
-read -p "Finished update, press enter to return to menu" input
+read -p "Finished setup update, press enter to return to menu" input
