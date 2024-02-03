@@ -19,7 +19,7 @@ These instructions assume:
  - (optional) right click on SD card drive labelled "bootfs" and rename to hostname of RPi.
  
 ### First boot
-- Login via ssh as the user created during imaging and run initial setup
+- Login via ssh as the user created during imaging and run initial setup (or open a terminal window if doing a local GUI install)
 <pre><code>sudo sh /boot/firmware/rpi_setup_base.sh</code></pre>
   - Select option to apply changes
       - Poweroff (recommended for multiple RPi scenario) to setup a static/reserved IP address on router (using MAC address noted earlier) or
