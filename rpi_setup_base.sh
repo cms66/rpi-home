@@ -34,3 +34,12 @@ cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 ufw allow 22
 ufw logging on
 ufw enable
+
+# Reboot or Poweroff (if static IP setup needed on router)
+read -p "Finished base setup, press p to poweroff (if setting a static IP on router) or any other key to reboot, then login as $usrname: " input
+if [ X$input = X"p" ]
+then
+	poweroff
+else
+	reboot
+fi
