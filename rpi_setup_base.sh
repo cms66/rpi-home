@@ -9,7 +9,7 @@ usrname=$(logname)
 # Install/update software
 apt-get -y update
 apt-get -y upgrade
-apt-get -y install python3-dev gcc g++ gfortran libraspberrypi-dev libomp-dev git-core build-essential cmake pkg-config make screen htop stress zip nfs-common
+apt-get -y install python3-dev gcc g++ gfortran libraspberrypi-dev libomp-dev git-core build-essential cmake pkg-config make screen htop stress zip nfs-common fail2ban ufw
 
 # Git setup
 mkdir /home/$usrname/.pisetup
@@ -25,3 +25,12 @@ echo "alias mytest=\"sudo sh ~/.pisetup/rpi-home/rpi_test_menu.sh\"" >> /home/$u
 python -m venv --system-site-packages /home/$usrname/.venv
 echo "alias myvp=\"source ~/.venv/bin/activate\"" >> /home/$usrname/.bashrc
 chown -R $usrname:$usrname /home/$usrname/.venv
+
+# Configure fail2ban
+cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.local
+cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+
+# Configure firewall (ufw)
+ufw allow 22
+ufw logging on
+ufw enable
