@@ -25,7 +25,7 @@ while [ $n != "x" ]; do
 		5) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_opencv.sh;;
 		6) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_opencl.sh;;
   		7) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_git_pull_setup.sh;;
-    		8) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_update_system.sh;;
+    		8) sh rpi_setup_update_system.sh;;
 		*) read -p "invalid option - press enter to return to menu" errkey;;
 	esac
 	show_main_menu
