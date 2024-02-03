@@ -16,6 +16,7 @@ export usrname
 show_main_menu
 read -p "Select option or x to exit: " n
 
+# Run as root so using absolute path 
 while [ $n != "x" ]; do
 	case $n in
 		1) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_hardware.sh;;
