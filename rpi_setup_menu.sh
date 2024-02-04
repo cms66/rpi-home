@@ -12,6 +12,8 @@ show_main_menu()
 
 usrname=$(logname)
 export usrname
+pinum=$(hostname | tr -cd '[:digit:].')
+export pinum
 
 show_main_menu
 read -p "Select option or x to exit: " n
