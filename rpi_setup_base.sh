@@ -35,7 +35,7 @@ cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.local
 cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 
 # Configure firewall (ufw)
-ufw allow 22
+ufw allow from 192.168.0.0/24 to any port ssh
 ufw logging on
 ufw enable
 
