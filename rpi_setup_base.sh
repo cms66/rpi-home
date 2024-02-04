@@ -35,7 +35,16 @@ cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.local
 cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 
 # Configure firewall (ufw)
-ufw allow from 192.168.0.0/24 to any port ssh
+# Allow SSH from local subnet only, unless remote access needed
+read -p "Allow remote ssh access?" input
+if [ X$input = X"y" ]
+then
+	ufw allow ssh
+else
+	ufw allow from 192.168.0.0/24 to any port ssh
+fi
+# ufw allow from 192.168.0.0/24 to any port ssh
+# ufw allow ssh
 ufw logging on
 ufw enable
 
