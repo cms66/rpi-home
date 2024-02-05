@@ -22,7 +22,7 @@ setup_local_server()
 	echo "/var/nfs-export /home/$usrname/share$pinum    none	bind	0	0" >> /etc/fstab
 	exportfs -ra
 	mount -a
-	ufw allow from 192.168.0.0/24 to any port nfs
+	ufw allow from $localnet to any port nfs
 	read -p "NFS Server setup done, press any key to return to menu" input
 }
 
