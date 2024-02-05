@@ -1,4 +1,4 @@
 clear
 printf "System summary \n--------------\n"
-ufw --status
+ufw status
 read -p "Press enter to return to menu" input
