@@ -4,6 +4,12 @@
 url32=https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.6.tar.gz
 url64=https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-5.0.1.tar.gz
 
+if [ $osarch = "64" ]
+then
+	downlink=$url64
+else
+	downlink=$url32
+fi
 show_mpi_menu()
 {
 	clear
@@ -15,8 +21,8 @@ show_mpi_menu()
 install_local()
 {
 	cd /home/$usrname
-	wget https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-5.0.1.tar.gz
-	tar -xzf openmpi-5.0.1.tar.gz
+	wget $downlink
+	tar -xzf openmpi*.tar.gz -C ./openmpi
 	cd openmpi 5.0.1
 	./configure
 	cores=$(nproc)
