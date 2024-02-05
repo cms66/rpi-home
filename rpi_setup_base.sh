@@ -6,6 +6,8 @@
 # - Rebuild local.tgz with more generic structure
 
 usrname=$(logname)
+localnet=$(ip route | awk '/proto/ && !/default/ {print $1}')
+
 # Install/update software
 apt-get -y update
 apt-get -y upgrade
@@ -35,14 +37,13 @@ cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.local
 cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 
 # Configure firewall (ufw)
-# TODO - Read subnet to var
 # Allow SSH from local subnet only, unless remote access needed
 read -p "Allow remote ssh access (y/n)?" input
 if [ X$input = X"y" ]
 then
 	ufw allow ssh
 else
-	ufw allow from 192.168.0.0/24 to any port ssh
+	ufw allow from $localnet to any port ssh
 fi
 ufw logging on
 ufw enable
