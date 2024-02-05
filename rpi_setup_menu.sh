@@ -16,6 +16,8 @@ pinum=$(hostname | tr -cd '[:digit:].')
 export pinum
 localnet=$(ip route | awk '/proto/ && !/default/ {print $1}')
 export localnet
+osarch=$(getconf LONG_BIT)
+export osarch
 
 show_main_menu
 read -p "Select option or x to exit: " n
