@@ -3,12 +3,15 @@
 # Latest versions
 url32=https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.6.tar.gz
 url64=https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-5.0.1.tar.gz
-
+ver32="4.1.6"
+ver64="5.0.1"
 if [ $osarch = "64" ]
 then
 	downlink=$url64
+ 	instver=$ver64
 else
 	downlink=$url32
+	instver=$ver32
 fi
 show_mpi_menu()
 {
@@ -22,8 +25,8 @@ install_local()
 {
 	cd /home/$usrname
 	wget $downlink
-	tar -xzf openmpi*.tar.gz -C ./openmpi
-	cd openmpi 5.0.1
+	tar -xzf openmpi*.tar.gz
+	cd openmpi-$instver
 	./configure
 	cores=$(nproc)
 	if [ $cores -gt 1 ]
@@ -39,7 +42,7 @@ install_local()
 	cd /home/$usrname
 	rm -rf openmpi*
 	mpirun --version
-	read -p "OpenMPI 5.0.1 - Local install finished, press enter to return to menu" input
+	read -p "OpenMPI $instver - Local install finished, press enter to return to menu" input
 }
 
 # 2- Build/install on server
@@ -47,9 +50,9 @@ install_local()
 install_server()
 {
 	cd /home/$usrname
-	wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.2.tar.gz
-	tar -xzf openmpi-4.1.2.tar.gz
-	cd openmpi-4.1.2
+	wget $downlink
+	tar -xzf openmpi*.tar.gz
+	cd openmpi-$instver
 	./configure
 	cores=$(nproc)
 	if [ $cores -gt 1 ]
@@ -61,13 +64,15 @@ install_server()
 	echo "cores for make: $cores"
 	make -j$cores all
 	make install
+ # TODO
+ # - get ip/mask from variable
 	echo "/usr/local 192.168.0.0/255.255.255.0(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
 	exportfs -ra
 	ldconfig
 	cd /home/$usrname
 	rm -rf openmpi*
 	mpirun --version
-	read -p "OpenMPI 4.1.2 - Server install finished, press enter to return to menu" input
+	read -p "OpenMPI $instver - Server install finished, press enter to return to menu" input
 }
 
 # 3- Install to run from server
@@ -83,7 +88,7 @@ install_client()
  	#systemctl daemon-reload
 	ldconfig
 	mpirun --version
-	read -p "OpenMPI 4.1.2 - Client install done, press enter to return to menu" input
+	read -p "OpenMPI $instver - Client install done, press enter to return to menu" input
 }
 
 show_mpi_menu
