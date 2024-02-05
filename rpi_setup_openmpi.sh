@@ -1,5 +1,8 @@
-# OpenMPI 5.0.1
+# OpenMPI
 # From version 5 32 bit OS is not supported
+# Latest versions
+url32=https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.6.tar.gz
+url64=https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-5.0.1.tar.gz
 
 show_mpi_menu()
 {
