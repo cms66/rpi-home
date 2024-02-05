@@ -27,7 +27,7 @@ while [ $n != "x" ]; do
 		2) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_nfs.sh;;
 		3) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_ssh_keys.sh;;
 		4) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_openmpi.sh;;
-		5) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_opencv.sh;;;
+		5) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_opencv.sh;;
   		6) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_git_pull_setup.sh;;
     		7) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_update_system.sh;;
       		8) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_system_summary.sh;;
