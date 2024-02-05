@@ -14,6 +14,8 @@ usrname=$(logname)
 export usrname
 pinum=$(hostname | tr -cd '[:digit:].')
 export pinum
+localnet=$(ip route | awk '/proto/ && !/default/ {print $1}')
+export localnet
 
 show_main_menu
 read -p "Select option or x to exit: " n
