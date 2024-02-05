@@ -1,6 +1,6 @@
 clear
 printf "System summary \n--------------\n"
-if [ $osarch == "64" ]
+if [ $osarch = "64" ]
 then
 	echo "64 bit"
 else
