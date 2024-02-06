@@ -18,7 +18,7 @@ setup_local_server()
 	tar -xvzf /home/$usrname/.pisetup/rpi-home/nfs-export.tgz -C /var/
 	mkdir /home/$usrname/share$pinum
 	chown $usrname:$usrname /home/$usrname/share$pinum
-	echo "/var/nfs-export 192.168.0.0/255.255.255.0(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
+	echo "/var/nfs-export 192.168.0.0/24(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
 	echo "/var/nfs-export /home/$usrname/share$pinum    none	bind	0	0" >> /etc/fstab
 	exportfs -ra
 	mount -a
