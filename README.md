@@ -15,6 +15,8 @@ These instructions assume:
  - Set WiFi only if it will be needed (use 2.4 GHz)
  - Enable ssh
 #### Modification
+ - wget https://raw.githubusercontent.com/cms66/rpi-home/main/rpi_setup_base.sh
+ - OR
  - Download (right click and select "Save link as") [rpi_setup_base.sh](https://github.com/cms66/rpi-home/raw/main/rpi_setup_base.sh) and copy to SD card drive labelled "bootfs".
  - (optional) right click on SD card drive labelled "bootfs" and rename to hostname of RPi.
  
