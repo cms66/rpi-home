@@ -64,9 +64,7 @@ install_server()
 	echo "cores for make: $cores"
 	make -j$cores all
 	make install
- # TODO
- # - get ip/mask from variable
-	echo "/usr/local 192.168.0.0/255.255.255.0(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
+	echo "/usr/local $localnet(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
 	exportfs -ra
 	ldconfig
 	cd /home/$usrname
