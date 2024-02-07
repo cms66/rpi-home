@@ -15,8 +15,7 @@ export osarch
 show_main_menu()
 {
 	clear
-	printf "Setup Main menu \n--------------\n"
-	printf "select setup option or x to exit \n\
+	printf "Setup Main menu \n--------------\n\
  1) Hardware \n\
  2) NFS \n\
  3) SSH - Shared keys \n\
