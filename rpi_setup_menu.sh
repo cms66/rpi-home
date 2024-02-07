@@ -3,13 +3,6 @@
 # TODO
 # - 
 
-show_main_menu()
-{
-	clear
-	printf "Setup Main menu \n--------------\n"
-	printf "select setup option or x to exit \n 1) Hardware \n 2) NFS \n 3) SSH - Shared keys \n 4) OpenMPI \n 5) OpenCV \n 6) Update setup \n 7) Update system \n 8) System summary \n"
-}
-
 usrname=$(logname)
 export usrname
 pinum=$(hostname | tr -cd '[:digit:].')
@@ -18,6 +11,21 @@ localnet=$(ip route | awk '/proto/ && !/default/ {print $1}')
 export localnet
 osarch=$(getconf LONG_BIT)
 export osarch
+
+show_main_menu()
+{
+	clear
+	printf "Setup Main menu \n--------------\n"
+	printf "select setup option or x to exit \n\
+ 1) Hardware \n\
+ 2) NFS \n\
+ 3) SSH - Shared keys \n\
+ 4) OpenMPI \n\
+ 5) OpenCV \n\
+ 6) Update setup \n\
+ 7) Update system \n\
+ 8) System summary \n"
+}
 
 show_main_menu
 read -p "Select option or x to exit: " n
