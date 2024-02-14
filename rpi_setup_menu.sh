@@ -4,7 +4,9 @@
 # - 
 
 usrname=$(logname)
+usrpath="/home/$usrname"
 export usrname
+export usrpath
 pinum=$(hostname | tr -cd '[:digit:].')
 export pinum
 localnet=$(ip route | awk '/proto/ && !/default/ {print $1}')
@@ -32,14 +34,14 @@ read -p "Select option or x to exit: " n
 # Run as root so using absolute path 
 while [ $n != "x" ]; do
 	case $n in
-		1) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_hardware.sh;;
-		2) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_nfs.sh;;
-		3) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_ssh_keys.sh;;
-		4) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_openmpi.sh;;
-		5) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_opencv.sh;;
-  		6) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_git_pull_setup.sh;;
-    		7) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_update_system.sh;;
-      		8) sh /home/$usrname/.pisetup/rpi-home/rpi_setup_system_summary.sh;;
+		1) sh $usrpath/.pisetup/rpi-home/rpi_setup_hardware.sh;;
+		2) sh $usrpath/.pisetup/rpi-home/rpi_setup_nfs.sh;;
+		3) sh $usrpath/.pisetup/rpi-home/rpi_setup_ssh_keys.sh;;
+		4) sh $usrpath/.pisetup/rpi-home/rpi_setup_openmpi.sh;;
+		5) sh $usrpath/.pisetup/rpi-home/rpi_setup_opencv.sh;;
+  		6) sh $usrpath/.pisetup/rpi-home/rpi_setup_git_pull_setup.sh;;
+    		7) sh $usrpath/.pisetup/rpi-home/rpi_setup_update_system.sh;;
+      		8) sh $usrpath/.pisetup/rpi-home/rpi_setup_system_summary.sh;;
 		*) read -p "invalid option - press enter to return to menu" errkey;;
 	esac
 	show_main_menu
