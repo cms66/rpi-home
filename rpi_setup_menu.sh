@@ -11,6 +11,8 @@ pinum=$(hostname | tr -cd '[:digit:].')
 export pinum
 localnet=$(ip route | awk '/proto/ && !/default/ {print $1}')
 export localnet
+pimodel=$(cat /sys/firmware/devicetree/base/model)
+export pimodel
 osarch=$(getconf LONG_BIT)
 export osarch
 
