@@ -3,9 +3,10 @@
 # TODO
 # - 
 
+# create/export variables for other scripts
 usrname=$(logname)
-usrpath="/home/$usrname"
 export usrname
+usrpath="/home/$usrname"
 export usrpath
 pinum=$(hostname | tr -cd '[:digit:].')
 export pinum
