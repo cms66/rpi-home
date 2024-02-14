@@ -15,11 +15,11 @@ show_nfs_menu()
 setup_local_server()
 {
 	apt-get -y install nfs-kernel-server
-	tar -xvzf /home/$usrname/.pisetup/rpi-home/nfs-export.tgz -C /var/
-	mkdir /home/$usrname/share$pinum
-	chown $usrname:$usrname /home/$usrname/share$pinum
+	tar -xvzf $usrpath/.pisetup/rpi-home/nfs-export.tgz -C /var/
+	mkdir $usrpath/share$pinum
+	chown $usrname:$usrname $usrpath/share$pinum
 	echo "/var/nfs-export 192.168.0.0/24(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
-	echo "/var/nfs-export /home/$usrname/share$pinum    none	bind	0	0" >> /etc/fstab
+	echo "/var/nfs-export $usrpath/share$pinum    none	bind	0	0" >> /etc/fstab
 	exportfs -ra
 	mount -a
 	ufw allow from $localnet to any port nfs
@@ -38,9 +38,9 @@ add_remote_mount()
 	read -p "Remote node (integer only): " nfsrem
 	read -p "Full path to remote directory (press enter for default = /var/nfs-export): " userdir
 	nfsdir=${userdir:="/var/nfs-export"}
-	mkdir /home/$usrname/share$nfsrem
-	chown $usrname:$usrname /home/$usrname/share$nfsrem
-	echo "pinode-$nfsrem.local:$nfsdir /home/$usrname/share$nfsrem    nfs defaults,user,exec,noauto,x-systemd.automount 0 0" >> /etc/fstab
+	mkdir $usrpath/share$nfsrem
+	chown $usrname:$usrname $usrpath/share$nfsrem
+	echo "pinode-$nfsrem.local:$nfsdir $usrpath/share$nfsrem    nfs defaults,user,exec,noauto,x-systemd.automount 0 0" >> /etc/fstab
 	mount -a
 	read -p "NFS remote mount done, press enter to return to menu" input
 }
