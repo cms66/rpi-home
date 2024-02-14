@@ -13,6 +13,8 @@ localnet=$(ip route | awk '/proto/ && !/default/ {print $1}')
 export localnet
 pimodel=$(cat /sys/firmware/devicetree/base/model)
 export pimodel
+pirev=$(cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}' | sed 's/^1000//')
+export pirev
 osarch=$(getconf LONG_BIT)
 export osarch
 
