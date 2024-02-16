@@ -56,20 +56,18 @@ add_server_to_host()
 # 5 - Share server pub key with host
 add_server_key_to_host()
 {
-	# Setup SSH/RSA keys on client
+	# Setup SSH/ECDSA keys on client
 	read -p "Which node in Pi cluster do you want to share pub key with? - integer only: " clientnum	
-	ssh-copy-id -i $usrpath/.ssh/id_ecdsa.pub $usrname@pinode-$clientnum.local
-	#cat /home/$usrname/.ssh/id_ecdsa.pub | ssh $usrname@pinode$clientnum.local "mkdir -p /home/$usrname/.ssh && chmod 700 /home/$usrname/.ssh && cat >> /home/$usrname/.ssh/authorized_keys"
-	ssh $usrname@pinode-$clientnum.local
-	#ssh $usrname@pinode$clientnum
-	read -p "$usrname@pinode$clientnum ($clientip) setup done, press any key to continue" input
+	ssh-copy-id -i $usrpath/.ssh/id_ecdsa.pub $usrname@pinode-$clientnum
+	ssh $usrname@pinode-$clientnum
+	read -p "$usrname@pinode-$clientnum ($clientip) setup done, press any key to continue" input
 }
 
 # 6 - Remove old root known)hosts for host
 remove_known_host()
 {
 	read -p "Which node in Pi cluster do you want to remove from known_hosts? - integer only: " clientnum
-	sudo ssh-keygen -f "/root/.ssh/known_hosts" -R "pinode-$clientnum.local"
+	ssh-keygen -f "/root/.ssh/known_hosts" -R "pinode-$clientnum"
 }
 
 show_ssh_key_menu
