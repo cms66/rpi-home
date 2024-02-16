@@ -76,7 +76,7 @@ install_server()
 	cd $usrpath
 	rm -rf openmpi*
 	mpirun --version
- 	ufw allow from $localnet
+ 	ufw allow from $localnet to $localnet
 	read -p "OpenMPI $instver - Server install finished, press enter to return to menu" input
 }
 
