@@ -17,11 +17,14 @@ show_nfs_menu()
 setup_local_server()
 {
 	apt-get -y install nfs-kernel-server
-	tar -xvzf $usrpath/.pisetup/rpi-home/nfs-export.tgz -C /var/
+	read -p "Path to directory containing share (press enter for default = /var/): " userdir
+	nfsdir=${userdir:="/var/"}
+ 	tar -xvzf $usrpath/.pisetup/rpi-home/nfs-export.tgz -C $nfsdir
+  	$nfsdir+="nfs-export" 
 	mkdir $usrpath/share$pinum
 	chown $usrname:$usrname $usrpath/share$pinum
-	echo "/var/nfs-export 192.168.0.0/24(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
-	echo "/var/nfs-export $usrpath/share$pinum    none	bind	0	0" >> /etc/fstab
+	echo "$nfsdir 192.168.0.0/24(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
+	echo "$nfsdir $usrpath/share$pinum    none	bind	0	0" >> /etc/fstab
 	exportfs -ra
 	mount -a
 	ufw allow from $localnet to any port nfs
