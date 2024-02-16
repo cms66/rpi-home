@@ -46,7 +46,6 @@ install_local()
 }
 
 # 2- Build/install on server
-# TODO - check for existing export of /usr/local
 install_server()
 {
 	cd $usrpath
@@ -64,8 +63,12 @@ install_server()
 	echo "cores for make: $cores"
 	make -j$cores all
 	make install
-	echo "/usr/local $localnet(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
-	exportfs -ra
+ 	if grep -F "/usr/local" "etc/exports"; then
+  		echo "export exists"
+  	else
+		echo "/usr/local $localnet(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
+	fi
+ 	exportfs -ra
 	ldconfig
 	cd $usrpath
 	rm -rf openmpi*
@@ -81,7 +84,11 @@ install_client()
 	read -p "Full path to remote directory (press enter for default = /usr/local): " userdir
 	nfsdir=${userdir:="/usr/local"}
 	mkdir -p $nfsdir
-	echo "pinode$nfsrem.local:$nfsdir $nfsdir    nfs defaults" >> /etc/fstab
+ 	if grep -F $nfsdir "etc/fstab"; then
+  		echo "mount already exists"
+    	else
+		echo "pinode$nfsrem.local:$nfsdir $nfsdir    nfs defaults" >> /etc/fstab
+  	fi
 	mount -a
  	#systemctl daemon-reload
 	ldconfig
