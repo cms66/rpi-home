@@ -1,4 +1,7 @@
 # OpenMPI
+# TODO
+# - Firewall rules for Server install
+
 # From version 5 32 bit OS is not supported
 # Latest versions
 url32=https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.6.tar.gz
@@ -73,6 +76,7 @@ install_server()
 	cd $usrpath
 	rm -rf openmpi*
 	mpirun --version
+ 	ufw allow from $localnet
 	read -p "OpenMPI $instver - Server install finished, press enter to return to menu" input
 }
 
