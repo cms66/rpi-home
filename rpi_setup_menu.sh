@@ -27,7 +27,7 @@ show_main_menu()
 	printf "Setup Main menu \n--------------\n\
  1) Hardware \n\
  2) NFS \n\
- 3) SSH - Shared keys \n\
+ 3) Security \n\
  4) OpenMPI \n\
  5) OpenCV \n\
  6) Update setup \n\
@@ -43,7 +43,7 @@ while [ $n != "x" ]; do
 	case $n in
 		1) sh $usrpath/.pisetup/rpi-home/rpi_setup_hardware.sh;;
 		2) sh $usrpath/.pisetup/rpi-home/rpi_setup_nfs.sh;;
-		3) sh $usrpath/.pisetup/rpi-home/rpi_setup_ssh_keys.sh;;
+		3) sh $usrpath/.pisetup/rpi-home/rpi_setup_security.sh;;
 		4) sh $usrpath/.pisetup/rpi-home/rpi_setup_openmpi.sh;;
 		5) sh $usrpath/.pisetup/rpi-home/rpi_setup_opencv.sh;;
   		6) sh $usrpath/.pisetup/rpi-home/rpi_setup_git_pull_setup.sh;;
