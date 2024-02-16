@@ -87,7 +87,7 @@ install_client()
  	if grep -F $nfsdir "etc/fstab"; then
   		echo "mount already exists"
     	else
-		echo "pinode$nfsrem.local:$nfsdir $nfsdir    nfs defaults" >> /etc/fstab
+		echo "pinode-$nfsrem.local:$nfsdir $nfsdir    nfs defaults" >> /etc/fstab
   	fi
 	mount -a
  	#systemctl daemon-reload
