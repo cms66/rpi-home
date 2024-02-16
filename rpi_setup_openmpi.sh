@@ -63,7 +63,7 @@ install_server()
 	echo "cores for make: $cores"
 	make -j$cores all
 	make install
- 	if grep -F "/usr/local" "etc/exports"; then
+ 	if grep -F "/usr/local" "/etc/exports"; then
   		echo "export exists"
   	else
 		echo "/usr/local $localnet(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
@@ -77,14 +77,13 @@ install_server()
 }
 
 # 3- Install to run from server
-# TODO - Check for existing mount of /usr/local
 install_client()
 {
 	read -p "Remote node (integer only): " nfsrem
 	read -p "Full path to remote directory (press enter for default = /usr/local): " userdir
 	nfsdir=${userdir:="/usr/local"}
 	mkdir -p $nfsdir
- 	if grep -F $nfsdir "etc/fstab"; then
+ 	if grep -F $nfsdir "/etc/fstab"; then
   		echo "mount already exists"
     	else
 		echo "pinode-$nfsrem.local:$nfsdir $nfsdir    nfs defaults" >> /etc/fstab
