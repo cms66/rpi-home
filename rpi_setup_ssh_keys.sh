@@ -26,7 +26,7 @@ create_server_keys()
 	# Create keys for user
 	mkdir -p $usrpath/.ssh
 	ssh-keygen -t ecdsa -f $usrpath/.ssh/id_ecdsa -P ""
-	chown -R $usrname.$usrname $usrpath/.ssh
+	chown -R $usrname:$usrname $usrpath/.ssh
 	sed -i "s/root@/$usrname@/g" $usrpath/.ssh/id_ecdsa.pub
 	# Modify SSHD config to use created keys
 	echo "PubkeyAuthentication yes" >> /etc/ssh/sshd_config
