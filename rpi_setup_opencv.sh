@@ -13,7 +13,7 @@ select setup option or x to exit \n\
 
 install_python()
 {
-	pip3 install opencv-python opencv-contrib-python
+	python pip3 install opencv-python opencv-contrib-python
 }
 
 install_deps()
