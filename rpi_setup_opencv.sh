@@ -59,8 +59,8 @@ install_server()
   		echo "export exists"
   	else
 		echo "/usr/local $localnet(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
+  		exportfs -ra
 	fi
- 	exportfs -ra
 	read -p "OpenCV 4.9.0 - Server install finished, press enter to return to menu" input
 }
 
