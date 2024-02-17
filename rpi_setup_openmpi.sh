@@ -107,6 +107,7 @@ install_client()
 install_python()
 {
 	# Run in Python Virtual Environment
+ 	su multipi
 	source $usrpath/.venv/bin/activate
 	python -m pip install mpi4py
 	deactivate
