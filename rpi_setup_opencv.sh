@@ -81,6 +81,7 @@ install_client()
  	#systemctl daemon-reload
   	install_deps
   	ldconfig
+   	scp -r multipi@pinode-$nfsrem:$usrpath/.venv/lib/python3.11/site-packages/cv2 $usrpath/.venv/lib/python3.11/site-packages/
 	read -p "OpenCV - Client install done, press enter to return to menu" input
 }
 
