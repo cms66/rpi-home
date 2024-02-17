@@ -106,7 +106,10 @@ install_client()
 # 4 - Install mpi4py
 install_python()
 {
+	# Run in Python Virtual Environment
+	source $usrpath/.venv/bin/activate
 	python -m pip install mpi4py
+	deactivate
 }
 
 show_mpi_menu
