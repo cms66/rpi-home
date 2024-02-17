@@ -4,11 +4,11 @@ show_opencv_menu()
 {
 	clear
 	printf "OpenCV setup menu \n----------\n\
-	select setup option or x to exit \n\
-	1) Install - Python only \n\
-	2) Build/install - local \n\
-	3) Build/install - server \n\
-	4) Install - client \n"
+select setup option or x to exit \n\
+1) Install - Python only \n\
+2) Build/install - local \n\
+3) Build/install - server \n\
+4) Install - client \n"
 }
 
 install_python()
