@@ -25,14 +25,14 @@ show_main_menu()
 {
 	clear
 	printf "Setup Main menu \n--------------\n\
- 1) Hardware \n\
- 2) NFS \n\
- 3) Security \n\
- 4) OpenMPI \n\
- 5) OpenCV \n\
- 6) Update setup \n\
- 7) Update system \n\
- 8) System summary \n"
+	1) Hardware \n\
+	2) NFS \n\
+	3) Security \n\
+	4) OpenMPI \n\
+	5) OpenCV \n\
+	6) Update setup \n\
+	7) Update system \n\
+	8) System summary \n"
 }
 
 show_main_menu
