@@ -19,8 +19,12 @@ fi
 show_mpi_menu()
 {
 	clear
-	printf "MPI setup menu \n----------\n"
-	printf "select setup option or x to exit \n 1) Build/install - local \n 2) Build/install - server \n 3) Install - client \n"
+	printf "MPI setup menu \n----------\n\
+select setup option or x to exit \n\
+1) Build/install - local \n\
+2) Build/install - server \n\
+3) Install - client \n\
+4) Install - Python (mpi4py)\n"
 }
 
 # 1 - Build/install local
@@ -99,14 +103,21 @@ install_client()
 	read -p "OpenMPI $instver - Client install done, press enter to return to menu" input
 }
 
+# 4 - Install mpi4py
+install_python()
+{
+	python -m pip install mpi4py
+}
+
 show_mpi_menu
 read -p "Select option or x to exit to main menu: " n
 while [ $n != "x" ]; do
 	case $n in
-	    1) install_local;;
-	    2) install_server;;
-	    3) install_client;;
-	    *) read -p "invalid option - press enter to continue" errkey;;
+		1) install_local;;
+		2) install_server;;
+		3) install_client;;
+		4) install_python();;
+		*) read -p "invalid option - press enter to continue" errkey;;
 	esac
 	show_mpi_menu
 	read -p "Select option or x to exit to main menu: " n
