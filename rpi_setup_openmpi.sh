@@ -108,9 +108,7 @@ install_python()
 {
 	# Run in Python Virtual Environment
 	source $usrpath/.venv/bin/activate
-	read -p "venv sourced, press enter to return to menu" input
 	python -m pip install mpi4py
- 	read -p "mpi4py install done in venv, press enter to return to menu" input
 	deactivate
 	read -p "mpi4py install done, press enter to return to menu" input
 }
@@ -122,7 +120,7 @@ while [ $n != "x" ]; do
 		1) install_local;;
 		2) install_server;;
 		3) install_client;;
-		4) install_python();;
+		4) install_python;;
 		*) read -p "invalid option - press enter to continue" errkey;;
 	esac
 	show_mpi_menu
