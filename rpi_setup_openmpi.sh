@@ -109,6 +109,7 @@ install_python()
 	# Run in Python Virtual Environment
 	source $usrpath/.venv/bin/activate
 	python -m pip install mpi4py
+ 	read -p "mpi4py install done in venv, press enter to return to menu" input
 	deactivate
 	read -p "mpi4py install done, press enter to return to menu" input
 }
