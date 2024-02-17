@@ -13,9 +13,7 @@ select setup option or x to exit \n\
 
 install_python()
 {
-	source $usrpath/.venv/bin/activate
 	pip3 install opencv-python opencv-contrib-python
-	deactivate
 }
 
 install_deps()
@@ -50,6 +48,7 @@ install_local()
 		sed -i "s/CONF_SWAPSIZE=2048/CONF_SWAPSIZE=100/g" /etc/dphys-swapfile
 		/etc/init.d/dphys-swapfile restart
 	fi
+ 	opencv_version
 	read -p "OpenCV 4.9.0 - Local install finished, press enter to return to menu" input
 }
 
@@ -85,6 +84,8 @@ install_client()
 	read -p "OpenCV - Client install done, press enter to return to menu" input
 }
 
+# Run in Python Virtual Environment
+source $usrpath/.venv/bin/activate
 show_opencv_menu
 read -p "Select option or x to exit to main menu: " n
 while [ $n != "x" ]; do
@@ -98,3 +99,4 @@ while [ $n != "x" ]; do
 	show_opencv_menu
 	read -p "Select option or x to exit to main menu: " n
 done
+deactivate
