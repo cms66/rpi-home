@@ -36,13 +36,6 @@ install_local()
 	cd openmpi-$instver
 	./configure
 	cores=$(nproc)
-	if [ $cores -gt 1 ]
-	then
-		((cores=$cores-1))
-	else
-		cores=1
-	fi
-	echo "cores for make: $cores"
 	make -j$cores all
 	make install	
 	ldconfig	
@@ -55,31 +48,13 @@ install_local()
 # 2- Build/install on server
 install_server()
 {
-	cd $usrpath
-	wget $downlink
-	tar -xzf openmpi*.tar.gz
-	cd openmpi-$instver
-	./configure
-	cores=$(nproc)
-	if [ $cores -gt 1 ]
-	then
-		((cores=$cores-1))
-	else
-		cores=1
-	fi
-	echo "cores for make: $cores"
-	make -j$cores all
-	make install
+	install_local
  	if grep -F "/usr/local" "/etc/exports"; then
   		echo "export exists"
   	else
 		echo "/usr/local $localnet(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
+  		exportfs -ra
 	fi
- 	exportfs -ra
-	ldconfig
-	cd $usrpath
-	rm -rf openmpi*
-	mpirun --version
  	ufw allow from $localnet to $localnet
 	read -p "OpenMPI $instver - Server install finished, press enter to return to menu" input
 }
@@ -107,11 +82,7 @@ install_client()
 install_python()
 {
 	# Run in Python Virtual Environment
- 	#git clone https://github.com/mpi4py/mpi4py.git
- 	#su $usrname
-	#myvp
 	$usrpath/.venv/bin/python -m pip install mpi4py
-	#deactivate
 	read -p "mpi4py install done, press enter to return to menu" input
 }
 
