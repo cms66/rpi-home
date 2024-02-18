@@ -46,6 +46,8 @@ setup_nvme()
 {
 	# Identify NVME drive
 	nvmedrv=$(fdisk -l | grep 'Disk.*nvme' | awk '{print $2}' | sed 's/://')
+ 	fdisk -g $nvmedrv
+ 	#echo "dtparam=pciex1_gen=3" >> /boot/firmware/config.txt
  	read -p "NVME drive - $nvmedrv setup done, press enter to return to menu" input
 }
 
