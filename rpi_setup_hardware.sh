@@ -30,8 +30,25 @@ show_hardware_menu()
 14) Arduino Libraries \n\
 15) Pressure sensor \n\
 16) Setup I2C \n\
-17) Setup GPS - PA1010D \n"
+17) Setup GPS - PA1010D \n\
+18) Setup NVME drive \n\
 }
+
+# 1 CSI Camera - Works - requires reboot
+setup_cam_csi()
+{
+ 	apt-get -y install python3-picamera2 --no-install-recommends	
+	read -p "CSI camera setup done, press enter to return to menu" input	
+}
+
+# 18 NVME drive
+setup_nvme()
+{
+	# Identify NVME drive
+	nvmedrv=$(fdisk -l | grep 'Disk.*nvme' | awk '{print $2}' | sed 's/://')
+ 	read -p "NVME drive - $nvmedrv setup done, press enter to return to menu" input
+}
+
 show_hardware_menu
 read -p "Select option or x to exit to main menu: " n
 while [ $n != "x" ]; do
@@ -53,6 +70,7 @@ while [ $n != "x" ]; do
 		15) setup_pressure_sensor;;
   		16) setup_i2c;;
     		17) setup_PA1010D;;
+    		18) setup_nvme;;      
 		*) read -p "invalid option - press enter to continue" errkey;;
 	esac
 	show_hardware_menu
