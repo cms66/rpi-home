@@ -57,7 +57,7 @@ setup_nvme()
    	nvmeuid=$(lsblk -o NAME,PARTUUID | grep nvme | awk '{print $2}')
    	mkdir /mnt/nvme
     	echo "PARTUUID=$nvmeuid	/mnt/nvme	ext4	defaults,noatime	0	0" >> /etc/fstab
-   	echo "dtparam=pciex1_gen=3" >> /boot/firmware/config.txt
+   	#echo "dtparam=pciex1_gen=3" >> /boot/firmware/config.txt
  	read -p "NVME drive - $nvmedrv setup done, press enter to return to menu" input
 }
 
