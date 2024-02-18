@@ -45,9 +45,19 @@ setup_cam_csi()
 setup_nvme()
 {
 	# Identify NVME drive
-	nvmedrv=$(fdisk -l | grep 'Disk.*nvme' | awk '{print $2}' | sed 's/://')
+	nvmedrv=$(parted -l | grep 'Disk.*nvme' | awk '{print $2}' | sed 's/://')
+ 	# Create GPT partition table
  	parted $nvmedrv mklabel gpt
- 	#echo "dtparam=pciex1_gen=3" >> /boot/firmware/config.txt
+  	# Create ext4 partition
+   	parted $nvmedrv mkpart nvme-part ext4 1 100%
+    	# Format partition
+	nvmeprt=$(sfdisk -l $nvmedrv | grep 'filesystem' | awk '{print $1}')
+ 	mkfs.ext4 -L nvme-data $nvmeprt
+  	# Create mount point and fstab entry for automount
+   	nvmeuid=$(lsblk -o NAME,PARTUUID | grep nvme | awk '{print $2}')
+   	mkdir /mnt/nvme
+    	echo "PARTUUID=$nvmeuid	/mnt/nvme	ext4	defaults,noatime	0	0" >> /etc/fstab
+   	#echo "dtparam=pciex1_gen=3" >> /boot/firmware/config.txt
  	read -p "NVME drive - $nvmedrv setup done, press enter to return to menu" input
 }
 
