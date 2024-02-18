@@ -107,10 +107,10 @@ install_client()
 install_python()
 {
 	# Run in Python Virtual Environment
- 	git clone https://github.com/mpi4py/mpi4py.git
+ 	#git clone https://github.com/mpi4py/mpi4py.git
  	#su $usrname
 	#myvp
-	#python -m pip install mpi4py
+	$usrpath/.venv/bin/python -m pip install mpi4py
 	#deactivate
 	read -p "mpi4py install done, press enter to return to menu" input
 }
