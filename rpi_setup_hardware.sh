@@ -1,5 +1,6 @@
 # Hardware setup
 # TODO
+# - NVME drive fstab entry
 # - Check for attached devices and configs for previous devices
 # - Enable port on firewall for multiple camera streams
 # - Check RPi model for GPS setup
