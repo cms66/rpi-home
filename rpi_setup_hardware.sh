@@ -31,7 +31,7 @@ show_hardware_menu()
 15) Pressure sensor \n\
 16) Setup I2C \n\
 17) Setup GPS - PA1010D \n\
-18) Setup NVME drive \n\
+18) Setup NVME drive \n"
 }
 
 # 1 CSI Camera - Works - requires reboot
