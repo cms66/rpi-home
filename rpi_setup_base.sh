@@ -62,6 +62,9 @@ sed -i 's/#PermitRootLogin\ prohibit-password/PermitRootLogin\ no/g' /etc/ssh/ss
 echo "dash dash/sh boolean false" | debconf-set-selections
 DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
 
+# Update firmware
+rpi-eeprom-update -a
+
 # Reboot or Poweroff (if static IP setup needed on router)
 read -p "Finished base setup, press p to poweroff (if setting a static IP on router) or any other key to reboot, then login as $usrname: " input
 if [ X$input = X"p" ]
