@@ -20,11 +20,11 @@ setup_local_server()
 	read -p "Path to directory containing share (press enter for default = /var/): " userdir
 	nfsdir=${userdir:="/var/"}
  	tar -xvzf $usrpath/.pisetup/rpi-home/nfs-export.tgz -C $nfsdir
-  	$nfsdir="$nfsdirnfs-export" 
+  	nfspath="${nfsdir}nfs-export" 
 	mkdir $usrpath/share$pinum
 	chown $usrname:$usrname $usrpath/share$pinum
-	echo "$nfsdir 192.168.0.0/24(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
-	echo "$nfsdir $usrpath/share$pinum    none	bind	0	0" >> /etc/fstab
+	echo "$nfspath 192.168.0.0/24(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
+	echo "$nfspath $usrpath/share$pinum    none	bind	0	0" >> /etc/fstab
 	exportfs -ra
 	mount -a
 	ufw allow from $localnet to any port nfs
