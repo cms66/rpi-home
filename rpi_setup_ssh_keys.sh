@@ -25,8 +25,9 @@ create_server_keys()
 {
 	# Create keys for user
 	mkdir -p $usrpath/.ssh
+ 	chown -R $usrname:$usrname $usrpath/.ssh
 	su -c "ssh-keygen -t ecdsa -f $usrpath/.ssh/id_ecdsa -P \"\"" multipi
-	chown -R $usrname:$usrname $usrpath/.ssh
+	#chown -R $usrname:$usrname $usrpath/.ssh
 	# Modify SSHD config to use created keys
 	echo "PubkeyAuthentication yes" >> /etc/ssh/sshd_config
 	echo "HostKey $usrpath/.ssh/id_ecdsa" >> /etc/ssh/sshd_config
