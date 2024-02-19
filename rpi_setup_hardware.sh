@@ -57,7 +57,7 @@ setup_nvme()
  	mkfs.ext4 -L nvme-data $nvmeprt
   	# Create mount point and fstab entry for automount
    	nvmeuid=$(lsblk -o NAME,PARTUUID | grep $nvmepname | awk '{print $2}')
-   	mkdir /mnt/nvme
+   	mkdir -p /mnt/nvme
     	echo "PARTUUID=$nvmeuid	/mnt/nvme	ext4	defaults,noatime	0	0" >> /etc/fstab
    	echo "dtparam=pciex1_gen=3" >> /boot/firmware/config.txt
  	read -p "NVME drive - $nvmedrv setup done, press enter to return to menu" input
