@@ -18,7 +18,7 @@ while [ $n != "x" ]; do
 	    2) sh $usrpath/.pisetup/rpi-home/rpi_setup_vnc.sh;;
 	    *) read -p "invalid option - press enter to continue" errkey;;
 	esac
-	show_nfs_menu
+	show_security_menu
 	read -p "Select option or x to exit to main menu: " n
 done
-read -p "System security updated, press enter to return to menu" input
+read -p "Security updated, press enter to return to menu" input
