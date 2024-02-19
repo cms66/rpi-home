@@ -52,13 +52,14 @@ setup_nvme()
   	# Create ext4 partition
    	parted $nvmedrv mkpart nvme-part ext4 1 100%
     	# Format partition
-	nvmeprt=$(sfdisk -l $nvmedrv | grep 'filesystem' | awk '{print $1}')
+	nvmepname=$(sfdisk -l $nvmedrv | grep 'filesystem' | awk '{print $1}' | sed 's/\/dev\///')
+ 	nvmeprt="/dev/$nvmepname"
  	mkfs.ext4 -L nvme-data $nvmeprt
   	# Create mount point and fstab entry for automount
-   	nvmeuid=$(lsblk -o NAME,PARTUUID | grep nvme | awk '{print $2}')
+   	nvmeuid=$(lsblk -o NAME,PARTUUID | grep $nvmepname | awk '{print $2}')
    	mkdir /mnt/nvme
     	echo "PARTUUID=$nvmeuid	/mnt/nvme	ext4	defaults,noatime	0	0" >> /etc/fstab
-   	#echo "dtparam=pciex1_gen=3" >> /boot/firmware/config.txt
+   	echo "dtparam=pciex1_gen=3" >> /boot/firmware/config.txt
  	read -p "NVME drive - $nvmedrv setup done, press enter to return to menu" input
 }
 
