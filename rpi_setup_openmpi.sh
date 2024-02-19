@@ -79,10 +79,14 @@ install_client()
 }
 
 # 4 - Install mpi4py
-install_python()
+install_python_server()
 {
-	# Run in Python Virtual Environment
-	$usrpath/.venv/bin/python -m pip install mpi4py
+ 	# Install to shared directory /usr/local?
+	git clone https://github.com/mpi4py/mpi4py.git
+	cd mpi4py
+	python setup.py build
+	python setup.py install
+	rm -rf mpi4py*
 	read -p "mpi4py install done, press enter to return to menu" input
 }
 
@@ -93,7 +97,7 @@ while [ $n != "x" ]; do
 		1) install_local;;
 		2) install_server;;
 		3) install_client;;
-		4) install_python;;
+		4) install_python_server;;
 		*) read -p "invalid option - press enter to continue" errkey;;
 	esac
 	show_mpi_menu
