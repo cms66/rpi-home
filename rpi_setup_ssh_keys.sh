@@ -58,7 +58,7 @@ add_server_key_to_host()
 {
 	# Setup SSH/ECDSA keys on client
 	read -p "Which node in Pi cluster do you want to share pub key with? - integer only: " clientnum	
-	su -c "ssh-copy-id -i $usrpath/.ssh/id_ecdsa.pub $usrname@pinode-$clientnum" multipi
+	su -c "ssh-copy-id -f -i $usrpath/.ssh/id_ecdsa.pub $usrname@pinode-$clientnum" multipi
 	ssh $usrname@pinode-$clientnum
 	read -p "$usrname@pinode-$clientnum ($clientip) setup done, press any key to continue" input
 }
