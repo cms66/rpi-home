@@ -82,6 +82,7 @@ install_client()
 install_python_server()
 {
  	# Install to shared directory /usr/local?
+  	apt-get -y install cython3
 	git clone https://github.com/mpi4py/mpi4py.git
 	cd mpi4py
 	python setup.py build
