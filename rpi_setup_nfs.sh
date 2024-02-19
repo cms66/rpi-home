@@ -20,7 +20,7 @@ setup_local_server()
 	read -p "Path to directory containing share (press enter for default = /var/): " userdir
 	nfsdir=${userdir:="/var/"}
  	tar -xvzf $usrpath/.pisetup/rpi-home/nfs-export.tgz -C $nfsdir
-  	$nfsdir+="nfs-export" 
+  	$nfsdir="$nfsdirnfs-export" 
 	mkdir $usrpath/share$pinum
 	chown $usrname:$usrname $usrpath/share$pinum
 	echo "$nfsdir 192.168.0.0/24(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
