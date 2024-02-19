@@ -24,7 +24,7 @@ select setup option or x to exit \n\
 1) Build/install - local \n\
 2) Build/install - server \n\
 3) Install - client \n\
-4) Install - Python (mpi4py)\n"
+4) Install - Python (mpi4py) - server\n"
 }
 
 # 1 - Build/install local
