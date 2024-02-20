@@ -1,7 +1,7 @@
 # NFS
 # TODO
-# Automount not working with Desktop image - Use options nfs defaults,user,exec,noauto,x-systemd.automount 0 0
-
+# - Automount not working with Desktop image - Use options nfs defaults,user,exec,noauto,x-systemd.automount 0 0
+# - Add options to update local/server mounts from updated tgz
 
 show_nfs_menu()
 {
