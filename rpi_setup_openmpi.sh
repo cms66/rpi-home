@@ -92,6 +92,16 @@ install_python_server()
 	read -p "mpi4py install done, press enter to return to menu" input
 }
 
+install_munge()
+{
+	read -p "munge install done, press enter to return to menu" input
+}
+
+install_slurm()
+{
+	read -p "slurm install done, press enter to return to menu" input
+}
+
 show_mpi_menu
 read -p "Select option or x to exit to main menu: " n
 while [ $n != "x" ]; do
