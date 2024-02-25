@@ -24,7 +24,9 @@ select setup option or x to exit \n\
 1) Build/install - local \n\
 2) Build/install - server \n\
 3) Install - client \n\
-4) Install - Python (mpi4py) - server\n"
+4) Install - Python (mpi4py) - server\n\
+5) Install - Munge - server\n\
+6) Install -Slurm - server\n"
 }
 
 # 1 - Build/install local
@@ -98,7 +100,9 @@ while [ $n != "x" ]; do
 		2) install_server;;
 		3) install_client;;
 		4) install_python_server;;
-		*) read -p "invalid option - press enter to continue" errkey;;
+		5) install_munge;;
+		6) install_slurm;;
+  		*) read -p "invalid option - press enter to continue" errkey;;
 	esac
 	show_mpi_menu
 	read -p "Select option or x to exit to main menu: " n
