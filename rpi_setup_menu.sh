@@ -35,12 +35,11 @@ show_main_menu()
 8) System summary \n"
 }
 
-#show_main_menu
-#read -p "Select option or x to exit: " n
+show_main_menu
+read -p "Select option or x to exit: " n
 
 # Run as root so using absolute path 
 while [ $n != "x" ]; do
-	show_main_menu
 	case $n in
 		1) sh $usrpath/.pisetup/rpi-home/rpi_setup_hardware.sh;;
 		2) sh $usrpath/.pisetup/rpi-home/rpi_setup_nfs.sh;;
@@ -52,6 +51,6 @@ while [ $n != "x" ]; do
       		8) sh $usrpath/.pisetup/rpi-home/rpi_setup_system_summary.sh;;
 		*) read -p "invalid option - press enter to return to menu" errkey;;
 	esac
-	#show_main_menu
+	show_main_menu
 	read -p "Select option or x to exit: " n
 done
