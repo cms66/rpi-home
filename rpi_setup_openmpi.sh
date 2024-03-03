@@ -94,7 +94,30 @@ install_python_server()
 
 install_munge()
 {
-	read -p "munge install done, press enter to return to menu" input
+	# Create System group and user
+	groupadd -r -g 992 munge
+ 	useradd -r -g munge -u 992 -d /var/lib/munge -s /sbin/nologin munge
+  	# Install from Git
+   	git clone https://github.com/dun/munge.git
+	cd munge
+ 	./bootstrap
+  	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --runstatedir=/run
+   	make
+    	make check
+	make install
+ 	# Security
+ 	chown munge:munge /etc/munge
+  	chmod 0700 /etc/munge
+ 	chown munge:munge /var/lib/munge
+  	chmod 0700 /var/lib/munge
+ 	chown munge:munge /var/log/munge
+  	chmod 0700 /var/log/munge
+ 	chown munge:munge /run/munge
+  	chmod 0755 /run/munge
+	# Create key
+	su -c "/usr/sbin/mungekey --verbose" munge
+ 	systemctl enable munge.service
+ read -p "munge install done, press enter to return to menu" input
 }
 
 install_slurm()
