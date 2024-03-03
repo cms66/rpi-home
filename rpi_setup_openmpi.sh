@@ -114,9 +114,11 @@ install_munge()
   	chmod 0700 /var/log/munge
  	chown munge:munge /run/munge
   	chmod 0755 /run/munge
+   	# Run munge at startup
+   	systemctl enable munge.service
 	# Create key
-	su -c "/usr/sbin/mungekey --verbose" munge
- 	systemctl enable munge.service
+	#sudo -u munge /usr/sbin/mungekey --verbose
+ 	
  read -p "munge install done, press enter to return to menu" input
 }
 
