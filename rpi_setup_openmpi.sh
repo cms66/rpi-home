@@ -95,8 +95,8 @@ install_python_server()
 install_munge()
 {
 	# Create System group and user
-	groupadd -r -g 992 munge
- 	useradd -r -g munge -u 992 -d /var/lib/munge -s /sbin/nologin munge
+	groupadd -r -g 991 munge
+ 	useradd -r -g munge -u 991 -d /var/lib/munge -s /sbin/nologin munge
   	# Install from Git
    	git clone https://github.com/dun/munge.git
 	cd munge
@@ -116,7 +116,9 @@ install_munge()
   	chmod 0755 /run/munge
    	# Run munge at startup
    	systemctl enable munge.service
-	# Create key
+	# Create or copy key
+ 	#read -p "munge install done, press enter to return to menu" input
+ 	
  	cp $usrpath/share1/munge.key /etc/munge/
   	chown munge:munge /etc/munge/munge.key
 	#sudo -u munge /usr/sbin/mungekey --verbose
