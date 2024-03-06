@@ -11,7 +11,7 @@ localnet=$(ip route | awk '/proto/ && !/default/ {print $1}')
 # Install/update software
 apt-get -y update
 apt-get -y upgrade
-apt-get -y install python3-dev gcc g++ gfortran libraspberrypi-dev libomp-dev git-core build-essential cmake pkg-config make screen htop stress zip nfs-common fail2ban ufw
+apt-get -y install python3-dev gcc g++ gfortran libraspberrypi-dev libomp-dev git-core build-essential cmake pkg-config make screen htop stress zip nfs-common fail2ban ufw ntpdate
 
 # Git setup
 mkdir /home/$usrname/.pisetup
