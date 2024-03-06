@@ -122,12 +122,13 @@ install_munge()
  	cp $usrpath/share1/munge.key /etc/munge/
   	chown munge:munge /etc/munge/munge.key
 	#sudo -u munge /usr/sbin/mungekey --verbose
- 	
- read -p "munge install done, press enter to return to menu" input
+ 	read -p "munge install done, press enter to return to menu" input
 }
 
 install_slurm()
 {
+	git clone https://github.com/SchedMD/slurm.git
+ 
 	read -p "slurm install done, press enter to return to menu" input
 }
 
