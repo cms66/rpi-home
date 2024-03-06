@@ -117,6 +117,8 @@ install_munge()
    	# Run munge at startup
    	systemctl enable munge.service
 	# Create key
+ 	cp $usrpath/share1/munge.key /etc/munge/
+  	chown munge:munge /etc/munge/munge.key
 	#sudo -u munge /usr/sbin/mungekey --verbose
  	
  read -p "munge install done, press enter to return to menu" input
