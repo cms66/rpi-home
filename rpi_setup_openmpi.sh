@@ -5,9 +5,9 @@
 # From version 5 32 bit OS is not supported
 # Latest versions
 url32=https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.6.tar.gz
-url64=https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-5.0.2.tar.gz
+url64=https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-5.0.3.tar.gz
 ver32="4.1.6"
-ver64="5.0.2"
+ver64="5.0.3"
 if [ $osarch = "64" ]
 then
 	downlink=$url64
